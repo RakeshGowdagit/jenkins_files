@@ -9,7 +9,7 @@ pipeline {
 
         }
 
-        stage {
+        stage('Test') {
             steps {
                 sh '''
                 #!/bin/bash
