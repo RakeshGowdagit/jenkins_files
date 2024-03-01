@@ -1,1 +1,22 @@
-//hello world this is my first groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'sleep 5'
+            }
+
+        }
+
+        stage {
+            steps {
+                sh '''
+                #!/bin/bash
+                ls -lrt
+                sleep 5
+            '''    
+            }
+        }
+    }
+}
