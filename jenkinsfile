@@ -1,12 +1,20 @@
 pipeline {
     agent none
+    environment {
+        TEST="test variable"
+    }
+    parameters {
+        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Name of the branch to build')
     stages {
         stage('Build') {
             agent {
                 label 'slave_1'
             }
             steps {
-                sh 'sleep 15'
+                sh '''
+                sleep 5
+                echo $TEST
+            '''
             }
 
         }
@@ -15,7 +23,7 @@ pipeline {
                 label 'slave2'
             }
             steps {
-                sh 'sleep 15'
+                sh 'echo "${params.BRANCH_NAME}"'
             }
         }
         stage('Test') {
@@ -24,7 +32,7 @@ pipeline {
                 sh '''
                 #!/bin/bash
                 ls -lrt
-                sleep 15
+                sleep 5
             '''    
             }
         }
@@ -36,7 +44,7 @@ pipeline {
                 sh '''
                 #!/bin/bash
                 ls -lrt
-                sleep 15
+                sleep 5
             '''    
             }
             
