@@ -4,19 +4,33 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sleep 5'
+                sh 'sleep 15'
             }
 
         }
-
+        stage('Build1') {
+            steps {
+                sh 'sleep 15'
+            }
+        }
         stage('Test') {
             steps {
                 sh '''
                 #!/bin/bash
                 ls -lrt
-                sleep 5
+                sleep 15
             '''    
             }
+        }
+        stage('Test2') {
+            steps {
+                sh '''
+                #!/bin/bash
+                ls -lrt
+                sleep 15
+            '''    
+            }
+            
         }
     }
 }
