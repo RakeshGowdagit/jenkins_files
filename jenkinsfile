@@ -24,7 +24,7 @@ pipeline {
                 label 'slave2'
             }
             steps {
-                sh 'echo ${params.BRANCH_NAME}'
+                sh "echo ${params.BRANCH_NAME}"
             }
         }
         stage('Test') {
