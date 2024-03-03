@@ -5,8 +5,11 @@ pipeline {
     }
     parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Name of the branch to build')
+<<<<<<< HEAD
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
         booleanParam(name: 'ENABLE_FEATURE', defaultValue: false, description: 'Enable Feature Flag')
+=======
+>>>>>>> 26dc443563c51d30896c4be2e8775f44a23cb0c3
     }
     stages {
         stage('Build') {
@@ -27,7 +30,10 @@ pipeline {
             }
             steps {
                 sh "echo ${params.BRANCH_NAME}"
+<<<<<<< HEAD
                 sh "echo Feature Flag Enabled: ${params.ENABLE_FEATURE}"
+=======
+>>>>>>> 26dc443563c51d30896c4be2e8775f44a23cb0c3
             }
         }
         stage('Test') {
