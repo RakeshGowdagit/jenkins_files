@@ -5,6 +5,9 @@ pipeline {
     }
     parameters {
         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Name of the branch to build')
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        booleanParam(name: 'ENABLE_FEATURE', defaultValue: false, description: 'Enable Feature Flag')
+    }
     stages {
         stage('Build') {
             agent {
@@ -23,7 +26,8 @@ pipeline {
                 label 'slave2'
             }
             steps {
-                sh 'echo "${params.BRANCH_NAME}"'
+                sh "echo ${params.BRANCH_NAME}"
+                sh "echo Feature Flag Enabled: ${params.ENABLE_FEATURE}"
             }
         }
         stage('Test') {
